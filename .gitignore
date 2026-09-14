@@ -1,0 +1,12 @@
+.env
+venv/
+__pycache__/
+*.pyc
+
+# Large datasets
+*.csv
+*.csv.gz
+
+# Spark temporary/checksum files
+**/._*
+**/*.crc
