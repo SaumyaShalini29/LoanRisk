@@ -653,7 +653,7 @@ with right_column:
 
         try:
             response = requests.post(
-                "https://loanrisk-iw25.onrender.com/predic",
+                "https://loanrisk-iw25.onrender.com/predict",
                 json=payload,
                 timeout=120
             )
