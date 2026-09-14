@@ -649,10 +649,11 @@ with right_column:
 
         try:
             response = requests.post(
-                "http://localhost:8000/predict",
+                "https://loanrisk-iw25.onrender.com/predict",
                 json=payload,
                 timeout=120
             )
+
 
             if response.status_code == 200:
 
