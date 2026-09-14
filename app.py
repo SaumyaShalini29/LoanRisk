@@ -2,7 +2,6 @@ import streamlit as st
 import requests
 import base64
 from pathlib import Path
-
 # --------------------------------------------------
 # Page Configuration
 # --------------------------------------------------
@@ -28,7 +27,7 @@ def get_base64_image(image_path):
 
 
 image_base64 = get_base64_image(
-    r"C:\Users\saumya\OneDrive\Desktop\LoanRisk\bg.jpg"
+    Path(__file__).parent / "bg.jpg"
 )
 
 # --------------------------------------------------
