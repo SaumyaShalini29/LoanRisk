@@ -1,0 +1,27 @@
+FROM python:3.11-slim
+
+RUN apt-get update && \
+    apt-get install -y openjdk-21-jre-headless && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
+ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk-amd64
+ENV PATH="${JAVA_HOME}/bin:${PATH}"
+
+WORKDIR /app
+
+COPY api.py /app/api.py
+COPY credit_risk_model /app/model/credit_risk_model
+
+RUN pip install --no-cache-dir \
+    --default-timeout=300 \
+    --retries=10 \
+    pyspark==4.2.0 \
+    "pandas<3" \
+    numpy \
+    fastapi \
+    uvicorn
+
+EXPOSE 8000
+
+CMD ["uvicorn", "api:app", "--host", "0.0.0.0", "--port", "8000"]
